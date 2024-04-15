@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0 ,shrink-to-fit=no">
+    <title>bootstrap</title>
+    <link rel="stylesheet" href="./assets/css/bootstrap.min.css">
+    <script src="./assets/css/bootstrap.min.css"></script>
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <script src="./assets/js/bootstrap.bundle.min.js"></script>
+    <script src="./assets/js/bootstrap.bundle.js"></script>
+    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.2/css/fontawesome.min.css">? -->
+    <link rel="stylesheet" href="./assets/font_awsome/fontawesome-free-6.5.1-web/css/all.min.css">
+    <link href="./assets/font_awsome/fontawesome-free-6.5.1-web/css/sharp-solid.css" rel="stylesheet" />
+</head>
+<body>
+  
+    <section id= "nav-bar">
+    <nav class="navbar navbar-expand-lg navbar-light">
+        <div class="container-fluid">
+          <a class="navbar-brand " href="#"><img src="./assets/images/HIA_Team_20240320_113204-removebg-preview.png" alt="" width="90" height="90" alt=""></a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0 ">
+              <li class="nav-item">
+                <a class="nav-link active text-light" aria-current="page" href="#">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-light" href="#">Register</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-light" href="#">Login</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-light" href="#">Contact</a>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle text-light" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Dropdown
+                </a>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="#">Calendar</a></li>
+                  <li><a class="dropdown-item" href="#">Test Series</a></li>
+                  <li><hr class="dropdown-divider"></li>
+                  <li><a class="dropdown-item" href="#">Something else here</a></li>
+                </ul>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle text-light" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Language
+                </a>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="#" onclick="translate('en')">English</a></li>
+                  <li><a class="dropdown-item" href="#" onclick="translate('hni')">Hindi</a></li>
+                </ul>
+              </li>
+      
+            
+          
+              <script>
+                function translate(language) {
+              
+                  alert('Translated to ' + language);
+                }
+              </script>
+
+      
+            </ul>
+            <form class="d-flex" role="search">
+              <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+              <button class="btn btn-outline-success" type="submit">Search</button>
+            </form>
+          </div>
+        </div>
+      </nav>
+    </section> 
+  
+          <div class="sidebar">
+            <a class="active" href="#home"><i class="fab fa-houzz"></i> Home</a>
+            <a href="#Dashboard"><i class="fas fa-tachometer-alt"></i> Dashboard </a>
+            <a href="#course"><i class="fas fa-file-alt"></i> Course</a>
+            <a href="#online course purchased"> <i class="fas fa-paper-plane"></i> Online Course Purchase</a>
+            <a href="#syllabus"><i class="fas fa-square"></i> Syllabus</a>
+            <a href="#videos"><i class="fas fa-video"></i> Videos</a>
+            <a href="#current affairs"><i class="fas fa-newspaper"></i> Current Affairs</a>
+            <a href="#Notes"><i class="fas fa-bookmark"></i> Notes</a>
+          </div>
+          
+
+
+           <script src="./assets/font_awsome/fontawesome-free-6.5.1-web/js/all.min.js"></script>
+          <!-- <section class="footer">
+            <div class="footer-row">
+              <div class="footer-col">
+                <h4>Info</h4>
+                <ul class="links">
+                  <li><a href="#">About Us</a></li>
+                  <li><a href="#">Customers</a></li>
+                  <li><a href="#">Service</a></li>
+                </ul>
+              </div>
+              <div class="footer-col">
+                <h4>Contact with us</h4>
+                <ul class="links">
+                  <li><a href="#">
+                    <i class="fa-solid fa-envelope"></i> Email</a></li>
+                  <li><a href="#">
+                    <i class="fa-solid fa-phone"></i> Contact us</a></li>
+                </ul>
+              </div>
+              <div class="footer-col">
+                <h4>Legal</h4>
+                <ul class="links">
+                  <li><a href="#">Terms and Conditions</a></li>
+                  <li><a href="#">Privacy Policy</a></li>
+                </ul>
+              </div>
+              <div class="footer-col">
+                <h4>Social</h4>
+                <div class="icons">
+                    <i class="fab fa-facebook-f"></i> 
+                    <i class="fab fa-twitter"></i>
+                    <i class="fab fa-linkedin"></i>
+                    <i class="fab fa-github"></i>
+                </div>
+            </div> -->
+            
+                <!-- <p>
+                  Subscribe to our newsletter for a weekly dose
+                  of news, updates, helpful tips, and
+                  exclusive offers.
+                </p>
+                <form action="#">
+                  <input type="text" placeholder="Your email" required>
+                  <button type="submit">SUBSCRIBE</button>
+                </form>
+                <div class="icons">
+                  <i class="fa-brands fa-facebook-f"></i>
+                  <i class="fa-brands fa-twitter"></i>
+                  <i class="fa-brands fa-linkedin"></i>
+                  <i class="fa-brands fa-github"></i>
+                </div> -->
+                <!-- <p>copyright &#169 2024 Hajela IAS Academy,India. All right reserved</p> -->
+              <!-- </div>
+            </div>
+            <p class="copyright"> copyright &#169 2024 Hajela IAS Academy,India. All right reserved</p>
+            <div class="footer-col">
+              <div class="footer-logo">
+                <img src="./assets/images/HIA_Team_20240320_113204-removebg-preview.png" alt="" width="100" height="100">
+  
+          </section>       
+           -->
+           <section class="footer">
+            <div class="footer-row">
+              <div class="footer-col logo-col">
+                <div class="footer-logo">
+                  <img src="./assets/images/HIA_Team_20240320_113204-removebg-preview.png" alt="" width="100" height="100">
+                </div>
+              </div>
+              <div class="footer-col">
+                <h4>Info</h4>
+                <ul class="links">
+                  <li><a href="#">About Us</a></li>
+                  <li><a href="#">Customers</a></li>
+                  <li><a href="#">Service</a></li>
+                </ul>
+              </div>
+              <div class="footer-col">
+                <h4>Contact with us</h4>
+                <ul class="links">
+                  <li><a href="#"><i class="fas fa-envelope"></i> Email</a></li>
+                  <li><a href="#"><i class="fas fa-phone"></i> Contact us</a></li>
+                </ul>
+              </div>
+              <div class="footer-col">
+                <h4>Social</h4>
+                <div class="icons">
+                  <i class="fab fa-facebook-f"></i>
+                  <i class="fab fa-twitter"></i>
+                  <i class="fab fa-linkedin"></i>
+                  <i class="fab fa-github"></i>
+                </div>
+              </div>
+              <!-- <div class="footer-col copyright-col">
+                <p class="copyright">Copyright &copy; 2024 Hajela IAS Academy, India. All rights reserved.</p>
+              </div> -->
+              <p class="copyright"> copyright &#169 2024 Hajela IAS Academy,India. All right reserved</p>
+              <ul class="links">
+                <li><a href="#">Terms and Conditions</a></li>
+                <li><a href="#">Privacy Policy</a></li>
+              </ul>
+            </div>
+          </section>
+          
+            
+            
+</body>
+</html>
+

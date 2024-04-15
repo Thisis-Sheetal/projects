@@ -1,0 +1,523 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Navbar with Image Slider</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+    <style>
+        .slider {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            margin: 20px auto;
+        }
+        .slide {
+            width: 100%;
+            display: none;
+        }
+        .btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            cursor: pointer;
+            padding: 10px;
+            font-size: 18px;
+        }
+        .prev {
+            left: 10px;
+        }
+        .next {
+            right: 10px;
+        }
+    </style>
+    <script>
+        function translate(language) {
+            alert('Translated to ' + language);
+        }
+        window.onscroll = function() {myFunction()};
+        var navbar = document.getElementById("navbar");
+        var sticky = navbar.offsetTop;
+        function myFunction() {
+            if (window.pageYOffset >= sticky) {
+                navbar.classList.add("sticky")
+            } else {
+                navbar.classList.remove("sticky");
+            }
+        }
+    </script>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+        <div class="menu-btn-wrapper">
+            <div class="menu-btn">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link active text-light " style="padding-left: 80px;" aria-current="page" href="#">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-light" href="./register.html">Register</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-light" href="./login.html">Login</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle text-light" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Dropdown
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="#">Calendar</a></li>
+                        <li><a class="dropdown-item" href="#">Test Series</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle text-light" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Language
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="#" onclick="translate('en')">English</a></li>
+                        <li><a class="dropdown-item" href="#" onclick="translate('hni')">Hindi</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="slider">
+    <img src="./IMAGES/1.jpg" alt="Image 1" class="slide" style="display:block;">
+    <img src="./IMAGES/3.jpg" alt="Image 3" class="slide">
+    <button class="btn prev">&#10094;</button>
+    <button class="btn next">&#10095;</button>
+</div>
+<script>
+    let slideIndex = 0;
+    const slides = document.querySelectorAll('.slide');
+    const showSlide = (index) => {
+        slides.forEach((slide, idx) => {
+            slide.style.display = idx === index ? 'block' : 'none';
+        });
+    };
+
+    document.querySelector('.prev').addEventListener('click', () => {
+        slideIndex = (slideIndex - 1 + slides.length) % slides.length;
+        showSlide(slideIndex);
+    });
+
+    document.querySelector('.next').addEventListener('click', () => {
+        slideIndex = (slideIndex + 1) % slides.length;
+        showSlide(slideIndex);
+    });
+
+    showSlide(slideIndex); // Show initial slide
+</script>
+
+</body>
+</html> -->
+
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Interface with Navbar, Sidebar, and Image Slider</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+    
+    <style>
+        body{
+            background-color: rgb(142, 151, 201);
+            margin: 0;
+            padding: 0;
+            height: 100%;
+        }
+        /* .slider {
+            position: relative;
+            width: 200%;
+            max-width: 800px;         
+            margin: 20px auto;
+            
+            
+        }
+        .slide {
+            width: 100%;
+            display: none; */
+            
+        /* } */
+        /* .slider .img .img2{
+            height: 1000px;
+            width: 533px;
+
+        } */
+
+        .btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(0, 0, 0, 0.5);
+            color: rgb(255, 255, 255);
+            border: none;
+            cursor: pointer;
+            padding: 10px;
+            font-size: 18px;
+        }
+        .prev {
+            left: 10px;
+        }
+        .next {
+            right: 10px;
+        }
+        .slider {
+    position: fixed; /* Changed from relative to fixed to cover the whole screen */
+    width: 100vw; /* Full viewport width */
+    height: 100vh; /* Full viewport height */
+    top: 0;
+    left: 0;
+    overflow: hidden; /* Hides anything outside the slider area */
+}
+
+.slide {
+    width: 100%;
+    height: 100%; /* Full height of the slider */
+    display: none; /* Keeps other slides hidden */
+    background-size: cover; /* Ensures images cover the slide area */
+    background-position: center; /* Centers background images */
+}
+
+/* .btn {
+    z-index: 1000; Ensures buttons are above the slides
+    font-size: 24px; Makes buttons larger
+} */
+
+/* .prev, .next {
+    width: auto; /* Auto width based on content size */
+    /* padding: 1% 2%; Padding for better visibility */
+/* } */ 
+        .side-bar {
+            background: #1b1a1b;
+            backdrop-filter: blur(15px);
+            width: 250px;
+            height: 100vh;
+            position: fixed;
+            top: 0;
+            left: -250px;
+            overflow-y: auto;
+            transition: 0.6s ease;
+            transition-property: left;
+        }
+        .side-bar.active {
+            left: 0;
+        }
+        .side-bar .menu { 
+            width: 100%;
+            margin-top: 30px;
+        }
+        .side-bar .menu .item a {
+            color: #fff;
+            font-size: 16px;
+            text-decoration: none;
+            display: block;
+            padding: 5px 30px;
+            line-height: 60px;
+        }
+        .side-bar .menu .item a:hover {
+            background: #3183f0;
+        }
+        .navbar {
+    position: relative; /* Might need to change to fixed based on layout */
+    z-index: 1010; /* Above the slider and buttons */
+    text-align: center;
+    color: black;
+}
+.side-bar {
+    z-index: 1010; /* Ensures sidebar is above the slider */
+}
+/* ******_________****** */
+/* General Styling */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif; /* Ensures a nice font is used */
+}
+
+/* Navbar specific styling */
+.navbar {
+    background-color: plum; /* Light gray background */
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Adds a subtle shadow to the navbar for depth */
+}
+
+.navbar-light .navbar-nav .nav-link {
+    color: #0c0c0c; /* Dark gray / almost black for text */
+    padding-left: 30px; /* Standardizes padding for alignment */
+    padding-right: 30px; /* Adds padding to the right for symmetrical spacing */
+    transition: color 0.3s; /* Smooth transition for hover effect */
+}
+
+.navbar-light .navbar-nav .nav-link:hover,
+.navbar-light .navbar-nav .nav-link:focus {
+    color: #007bff; /* Bootstrap's default primary color for hover */
+}
+
+/* Dropdown Menu Styling */
+.dropdown-menu {
+    border: 0; /* Removes the border for a cleaner look */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Similar shadow as navbar for consistency */
+    font-size: 0.9rem; /* Slightly smaller font size for dropdown items */
+}
+
+.dropdown-item {
+    padding: 10px 20px; /* Adequate padding for touch targets */
+}
+
+/* Hover effects for dropdown items */
+.dropdown-item:hover,
+.dropdown-item:focus {
+    background-color: #f0f0f0; /* Very light gray background on hover */
+    color: #007bff; /* Text color change on hover */
+}
+
+/* Navbar Toggle (Hamburger Menu) Styling */
+.navbar-toggler {
+    border: none; /* Removes border of the toggler for a cleaner look */
+    outline: none; /* Removes the outline to prevent focus highlight */
+}
+
+.navbar-toggler-icon {
+    color: #007bff; /* Color for the icon can be set here */
+}
+
+/* Media Queries for Responsive Adjustments */
+@media (max-width: 992px) {
+    .navbar-light .navbar-nav .nav-link {
+        padding-left: 15px; /* Reduces padding on smaller screens */
+        padding-right: 15px;
+    }
+}
+
+/* Special Styling for Active or Current Page */
+.nav-link.active {
+    font-weight: bold; /* Makes the active link bold */
+    color: #0056b3; /* A darker shade of blue for the active link */
+}
+
+/* .navbar { */
+            /* background-color: #f8f9fa; Light gray background */
+            /* border-bottom: 1px solid #dee2e6; Adds a subtle border for definition */
+        /* } */
+        .navbar-nav .nav-link {
+            color: #007bff; /* Bootstrap primary color */
+            transition: color 0.3s; /* Smooth color transition */
+        }
+        .navbar-nav .nav-link:hover,
+        .navbar-nav .nav-link:focus {
+            color: #0056b3; /* Darker shade of primary color for hover */
+        }
+        .dropdown-menu {
+            border: none; /* No border for a cleaner look */
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Soft shadow for dropdown */
+        }
+        .dropdown-item:hover,
+        .dropdown-item:focus {
+            background-color: #f8f9fa; /* Matches navbar background */
+        }
+
+    </style>
+</head>
+<body>
+ 
+<nav class="navbar navbar-expand-lg navbar-light">
+    <div class="container-fluid">
+        <div class="menu-btn-wrapper">
+            <div class="menu-btn"><i class="fas fa-bars"></i></div>
+        </div>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <!-- <li class="nav-item">
+                    <a class="nav-link active text-light " style="padding-left: 80px;" aria-current="page" href="#">Home</a>
+                </li> -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-expanded="false">
+                    Home
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item" href="#">Action</a></li>
+                        <li><a class="dropdown-item" href="#">Another action</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="#">Something else here</a></li>
+                    </ul>
+                </li>
+                <!-- <li class="nav-item">
+                    <a class="nav-link text-light" href="">Pages</a>
+                </li> -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-expanded="false">
+                    Page
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item" href="#">About</a></li>
+                        <li><a class="dropdown-item" href="#">Registration</a></li>
+                        <!-- <li><hr class="dropdown-divider"></li> -->
+                        <li><a class="dropdown-item" href="#">Login</a></li>
+                    </ul>
+                </li>
+                <!-- <li class="nav-item">
+                    <a class="nav-link text-light" href="">Lms</a>
+                </li> -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-expanded="false">
+                    Lms
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item" href="#">Syllabus</a></li>
+                        <li><a class="dropdown-item" href="#">Video</a></li>
+                        <li><a class="dropdown-item" href="#">Notes</a></li>
+                        <li><a class="dropdown-item" href="#">Current Affairs</a></li>
+                        <li><a class="dropdown-item" href="#">E-Book</a></li>
+                        <!-- <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="#">Something else here</a></li> -->
+                    </ul>
+                </li>
+                <!-- <li class="nav-item">
+                    <a class="nav-link text-light" href="">Course</a>
+                </li> -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-expanded="false">
+                    Course
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item" href="#">UPSC</a></li>
+                        <li><a class="dropdown-item" href="#">MPPSC</a></li>
+                        <li><a class="dropdown-item" href="#">other</a></li>
+                       </ul>
+                       </li>
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
+                    Language
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item" href="#">Hindi</a></li>
+                        <li><a class="dropdown-item" href="#">English</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="#">Something else here</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="side-bar">
+    <header>
+        <div class="close-btn"><i class="fas fa-times"></i></div>
+        <div style="display: flex; align-items: center; padding-top: 10px;">
+            <img src="./IMAGES/HIA_Team_20240320_113204-removebg-preview.png" alt="" width="100" height="100">
+            <h1 style="margin: 0;">HIA</h1>
+        </div>
+    </header>
+
+    <div class="menu"> 
+         Sidebar Items Here
+        <div class="item">
+            <a class="sub-btn"><i class="fa-solid fa-graduation-cap"></i>Student<i class="fas fa-angle-right dropdown"></i></a>
+            <div class="sub-menu">
+                <a href="./addstudent.html" class="sub-item">Add Students</a>
+                <a href="#" class="sub-item">Students List</a>                    
+            </div>
+        </div>
+        <div class="item">
+            <a class="sub-btn"><i class="fas fa-table"></i>Course<i class="fas fa-angle-right dropdown"></i></a>
+            <div class="sub-menu">
+                <a href="#" class="sub-item">UPSC</a>
+                <a href="#" class="sub-item">MPPSC</a>
+            </div>
+        </div>
+        <div class="item"><a href="#"><i class="fas fa-paper-plane"></i>Online Course Purchase</a></div>
+        <div class="item">
+            <a class="sub-btn"><i class="fas fa-square"></i>Syllabus<i class="fas fa-angle-right dropdown"></i></a>
+            <div class="sub-menu">
+                <a href="#" class="sub-item">UPSC</a>
+                <a href="#" class="sub-item">MPPSC</a>
+            </div>
+        </div>
+        <div class="item"><a href="#"><i class="fas fa-video"></i>Video</a></div>
+        <div class="item"><a href="#"><i class="fas fa-newspaper"></i>Current Affairs</a></div>
+        <div class="item">
+            <a class="sub-btn"><i class="fas fa-bookmark"></i>Study Materials<i class="fas fa-angle-right dropdown"></i></a>
+            <div class="sub-menu">
+                <a href="#" class="sub-item">Notes</a>
+                <a href="#" class="sub-item">Question Bank</a>
+                <a href="#" class="sub-item">E-Book</a> 
+            </div>
+        </div>
+        <div class="item">
+            <a class="sub-btn"><i class="fa-solid fa-pen-to-square"></i>Test<i class="fas fa-angle-right dropdown"></i></a>
+            <div class="sub-menu">
+                <a href="#" class="sub-item">Create Test</a>
+                <a href="#" class="sub-item">Assign Test</a>
+            </div>
+        </div>
+        <div class="item"><a href="#"><i class="fas fa-info-circle"></i>About</a></div>
+    </div>
+</div>
+
+<div class="slider">
+    <img src="./IMAGES/4.jpg" alt="Image 1" class="slide" style="display:block;">
+    <img src="./IMAGES/3.jpg" alt="Image 3" class="slide">
+    <button class="btn prev">&#10094;</button>
+    <button class="btn next">&#10095;</button>
+</div>
+<script>
+    let slideIndex = 0;
+    const slides = document.querySelectorAll('.slide');
+    const showSlide = (index) => {
+        slides.forEach((slide, idx) => {
+            slide.style.display = idx === index ? 'block' : 'none';
+        });
+    };
+
+    document.querySelector('.prev').addEventListener('click', () => {
+        slideIndex = (slideIndex - 1 + slides.length) % slides.length;
+        showSlide(slideIndex);
+    });
+
+    document.querySelector('.next').addEventListener('click', () => {
+        slideIndex = (slideIndex + 1) % slides.length;
+        showSlide(slideIndex);
+    });
+
+    showSlide(slideIndex); // Show initial slide
+
+    $(document).ready(function() {
+        // Toggle sub menus
+        $('.sub-btn').click(function() {
+            $(this).next('.sub-menu').slideToggle();
+            $(this).find('.dropdown').toggleClass('rotate');
+        }); 
+
+        // Expand and collapse the sidebar
+         $('.menu-btn').click(function() {
+           $('.side-bar').addClass('active');
+          $('.menu-btn').css("visibility", "hidden");
+      });
+
+       $('.close-btn').click(function() {
+            $('.side-bar').removeClass('active');
+       $('.menu-btn').css("visibility", "visible");
+         });
+     });
+ </script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+ <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script> 
+ </body>
+ </html> 
+

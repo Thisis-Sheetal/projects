@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Integrated Sidebar with Bootstrap</title>
+    <link rel="stylesheet" href="./assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+    <link rel="stylesheet" href="./assets/font_awsome/fontawesome-free-6.5.1-web/css/all.min.css">
+    <link href="./assets/font_awsome/fontawesome-free-6.5.1-web/css/sharp-solid.css" rel="stylesheet" />
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Poppins", sans-serif;
+        }
+        body { 
+            min-height: 100vh;
+            background: white;
+            color: white;
+            background-size: cover;
+            background-position: center;
+        }
+        .side-bar {
+            background: #1b1a1b;
+            backdrop-filter: blur(15px);
+            width: 250px;
+            height: 100vh;
+            position: fixed;
+            top: 0;
+            left: -250px;
+            overflow-y: auto;
+            transition: 0.6s ease;
+            transition-property: left;
+        }
+        .side-bar::-webkit-scrollbar {
+            width: 0px;
+        }
+        .side-bar.active {
+            left: 0;
+        }
+        .side-bar .menu {
+            width: 100%;
+            margin-top: 30px;
+        }
+        .side-bar .menu .item {
+            position: relative;
+            cursor: pointer;
+        }
+        .side-bar .menu .item a {
+            color: #fff;
+            font-size: 16px;
+            text-decoration: none;
+            display: block;
+            padding: 5px 30px;
+            line-height: 60px;
+        }
+        .side-bar .menu .item a:hover {
+            background: #33363a;
+            transition: 0.3s ease;
+        }
+        .side-bar .menu .item i {
+            margin-right: 15px;
+        }
+        .side-bar .menu .item a .dropdown {
+            position: absolute;
+            right: 0;
+            margin: 20px;
+            transition: 0.3s ease;
+        }
+        .side-bar .menu .item .sub-menu {
+            background: #262627;
+            display: none;
+        }
+        .side-bar .menu .item .sub-menu a {
+            padding-left: 80px;
+        }
+        .rotate {
+            transform: rotate(90deg);
+        }
+        .close-btn {
+            position: absolute;
+            color: #fff;
+            font-size: 23px;
+            right: 0px;
+            margin: 15px;
+            cursor: pointer;
+        }
+        .menu-btn {
+            position: absolute;
+            color: rgb(0, 0, 0);
+            font-size: 35px;
+            margin: 25px;
+            cursor: pointer;
+        }
+        .main {
+            margin-left: 250px; /* Adjusted to make room for the sidebar */
+            padding: 50px;
+        }
+        .main h1 {
+            color: #333; /* Adjusted for better visibility */
+            font-size: 24px; /* Adjusted for a more standard size */
+        }
+        .container{
+            width: 1140px;
+
+}
+        #nav-bar
+        {
+        position: sticky;
+            top: 10px;
+            z-index: 10;
+
+            }
+            .navbar 
+            {
+                background : linear-gradient(to right, #a517ba,#5f1782);
+                padding:0;
+                height: 100px;
+                font-weight: 600;
+                font-size:large;
+                color: #fff;
+            }
+            .menu-btn-wrapper {
+    display: flex;
+    align-items: center;
+}
+.menu-btn {
+    cursor: pointer;
+}
+.sticky {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000; /* Ensures the navbar is on top of other content */
+}
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+        <div class="menu-btn-wrapper">
+        <div class="menu-btn">
+        <i class="fas fa-bars"></i>
+    </div>
+</div>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0 ">
+                <!-- <li>
+                    <div class="menu-btn">
+                        <i class="fas fa-bars"></i>
+                    </div>
+                </li> -->
+              <li class="nav-item">
+                <a class="nav-link active text-light " style="padding-left: 80px;" aria-current="page" href="#">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-light" href="./register.html">Register</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-light" href="./login.html">Login</a>
+              </li>
+              <!-- <li class="nav-item">
+                <a class="nav-link text-light" href="#">Contact</a>
+              </li> -->
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle text-light" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Dropdown
+                </a>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="#">Calendar</a></li>
+                  <li><a class="dropdown-item" href="#">Test Series</a></li>
+                </ul>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle text-light" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Language
+                </a>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="#" onclick="translate('en')">English</a></li>
+                  <li><a class="dropdown-item" href="#" onclick="translate('hni')">Hindi</a></li>
+                 
+                </ul>
+              </li>
+              <script>
+                function translate(language) {
+              
+                  alert('Translated to ' + language);
+                }
+              </script>
+              <script>
+                window.onscroll = function() {myFunction()};
+                
+                var navbar = document.getElementById("navbar");
+                var sticky = navbar.offsetTop;
+                
+                function myFunction() {
+                  if (window.pageYOffset >= sticky) {
+                    navbar.classList.add("sticky")
+                  } else {
+                    navbar.classList.remove("sticky");
+                  }
+                }
+                </script>
+                
+        </div>
+    </div>
+    </nav>
+    <!-- <script>
+      window.onscroll = function() {myFunction()};
+      
+      var navbar = document.getElementById("navbar");
+      var sticky = navbar.offsetTop;
+      
+      function myFunction() {
+        if (window.pageYOffset >= sticky) {
+          navbar.classList.add("sticky")
+        } else {
+          navbar.classList.remove("sticky");
+        }
+      }
+      </script>
+       -->
+    
+
+    <div class="side-bar">
+        <header>
+            <div class="close-btn">
+                <i class="fas fa-times"></i>
+            </div>
+            <div style="display: flex; align-items: center; padding-top: 10px;">
+                <img src="./assets/images/HIA_Team_20240320_113204-removebg-preview.png" alt="" width="100" height="100">
+                <h1 style="margin: 0;">HIA</h1>
+            </div>
+        </header>
+    
+        <div class="menu">
+            <!-- Sidebar Items Here -->
+            <!-- <div class="item"><a href="#"><i class="fas fa-desktop"></i>Dashboard</a></div> -->
+            <div class="item">
+                <a class="sub-btn" ><i class="fa-solid fa-graduation-cap"></i>Student<i class="fas fa-angle-right dropdown"></i></a>
+                <div class="sub-menu">
+                    <a href="./addstudent.html" class="sub-item">Add Students</a>
+                    <a href="#" class="sub-item">Students List</a>                    
+                </div>
+            </div>            
+            <div class="item">
+                <a class="sub-btn"><i class="fas fa-table"></i>Course<i class="fas fa-angle-right dropdown"></i></a>
+                <div class="sub-menu">
+                    <a href="#" class="sub-item">UPSC</a>
+                    <a href="#" class="sub-item">MPPSC</a>
+                </div>
+            </div>
+            <div class="item"><a href="#"><i class="fas fa-paper-plane"></i>Online Course Purchase</a></div>
+            <div class="item">
+                <a class="sub-btn"><i class="fas fa-square"></i>Syllabus<i class="fas fa-angle-right dropdown"></i></a>
+                <div class="sub-menu">
+                    <a href="#" class="sub-item">UPSC</a>
+                    <a href="#" class="sub-item">MPPSC</a>
+                </div>
+            </div>
+            <div class="item"><a href="#"><i class="fas fa-video"></i>Video</a></div>
+            <div class="item"><a href="#"><i class="fas fa-newspaper"></i>Current Affairs</a></div>
+            <!-- <div class="item"><a href="#"><i class="fas fa-bookmark"></i>Notes</a></div> -->
+
+            <div class="item">
+                <a class="sub-btn"><i class="fas fa-bookmark"></i>Study Materials<i class="fas fa-angle-right dropdown"></i></a>
+                <div class="sub-menu">
+                    <a href="#" class="sub-item">Notes</a>
+                    <a href="#" class="sub-item">Question Bank</a>
+                    <a href="#" class="sub-item">E-Book</a>
+                </div>
+            </div>
+            <div class="item">
+                <a class="sub-btn"><i class="fa-solid fa-pen-to-square"></i>Test<i class="fas fa-angle-right dropdown"></i></a>
+                <div class="sub-menu">
+                    <a href="#" class="sub-item">Create Test</a>
+                    <a href="#" class="sub-item">Assign Test</a>
+                </div>
+            </div>
+            <div class="item"><a href="#"><i class="fas fa-info-circle"></i>About</a></div>
+        </div>
+    </div>
+
+
+    <script src="./assets/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" charset="utf-8"></script>
+    <script>
+        $(document).ready(function() {
+            //jquery for toggle sub menus
+            $('.sub-btn').click(function() {
+                $(this).next('.sub-menu').slideToggle();
+                $(this).find('.dropdown').toggleClass('rotate');
+            });
+
+            //jquery for expand and collapse the sidebar
+            $('.menu-btn').click(function() {
+                $('.side-bar').addClass('active');
+                $('.menu-btn').css("visibility", "hidden");
+            });
+
+            $('.close-btn').click(function() {
+                $('.side-bar').removeClass('active');
+                $('.menu-btn').css("visibility", "visible");
+            });
+        });
+    </script>
+
+    <div class="footer container-fluid">
+        <div class="footer-row">
+          <div class="footer-col logo-col">
+            <div class="footer-logo">
+              <img src="./assets/images/HIA_Team_20240320_113204-removebg-preview.png" alt="" width="100" height="100">
+            </div>
+          </div>
+        
+          <div class="footer-col">
+            <h4>Info</h4>
+            <ul class="links">
+              <li><a href="#">About Us</a></li>
+              <li><a href="#">Customers</a></li>
+              <li><a href="#">Service</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h4>Contact with us</h4>
+            <ul class="links">
+              <li><a href="#"><i class="fas fa-envelope"></i> Email</a></li>
+              <li><a href="#"><i class="fas fa-phone"></i> Contact us</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h4>Social</h4>
+            <div class="icons">
+              <i class="fab fa-facebook-f"></i>
+              <i class="fab fa-twitter"></i>
+              <i class="fab fa-linkedin"></i>
+              <i class="fab fa-github"></i>
+              <i class="fab fa-telegram"></i>
+              <i class="fab fa-youtube"></i>
+            </div>
+          </div>
+          <!-- <div class="footer-col copyright-col">
+            <p class="copyright">Copyright &copy; 2024 Hajela IAS Academy, India. All rights reserved.</p>
+          </div> -->
+          <p class="copyright"> copyright &#169 2024 Hajela IAS Academy,India. All right reserved</p>
+          <ul class="links">
+            <li><a href="#">Terms and Conditions</a></li>
+            <li><a href="#">Privacy Policy</a></li>
+          </ul>
+        </div>
+    </div>
+      <!-- <div class="container">
+        <h2>Add Student</h2>
+        <form action="#" method="POST">
+          <div class="form-group">
+            <label for="student_name">Student Name:</label>
+            <input type="text" id="student_name" name="student_name" required>
+          </div>
+          <div class="form-group">
+            <label for="dob">Date of Birth:</label>
+            <input type="date" id="dob" name="dob" required>
+          </div>
+          <div class="form-group">
+            <label for="mobile_no">Mobile No.:</label>
+            <input type="tel" id="mobile_no" name="mobile_no" pattern="[0-9]{10}" required>
+          </div>
+          <div class="form-group">
+            <label for="email">Email ID:</label>
+            <input type="email" id="email" name="email" required>
+          </div>
+          <div class="form-group">
+            <label for="course">Course:</label>
+            <input type="text" id="course" name="course" required>
+          </div>
+          <div class="form-group">
+            <label for="medium">Medium:</label>
+            <select id="medium" name="medium" required>
+              <option value="english">English</option>
+              <option value="hindi">Hindi</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="education">Education in PG/UG:</label>
+            <input type="text" id="education" name="education" required>
+          </div>
+          <div class="form-group">
+            <label for="gender">Gender:</label>
+            <input type="radio" id="male" name="gender" value="male" required>
+            <label for="male">Male</label>
+            <input type="radio" id="female" name="gender" value="female" required>
+            <label for="female">Female</label>
+          </div>
+          <div class="form-group">
+            <label for="city">City:</label>
+            <input type="text" id="city" name="city" required>
+          </div>
+          <button type="submit">Submit</button>
+        </form>
+      </div> -->
+
+      <!-- Slideshow container -->
+<!-- <header>
+<div class="slideshow-container"> -->
+
+  <!-- Full-width images with number and caption text -->
+  <!-- <div class="mySlides fade">
+    <div class="numbertext">1 / 3</div>
+    <img src="./assets/images/1.jpg" style="width:100%">
+    <div class="text">Caption Text</div>
+  </div>
+
+  <div class="mySlides fade">
+    <div class="numbertext">2 / 3</div>
+    <img src="./assets/images/2.jpg" style="width:100%">
+    <div class="text">Caption Two</div>
+  </div>
+
+  <div class="mySlides fade">
+    <div class="numbertext">3 / 3</div>
+    <img src="./assets/images/3.jpg" style="width:100%">
+    <div class="text">Caption Three</div>
+  </div> -->
+
+  <!-- Next and previous buttons -->
+  <!-- <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+  <a class="next" onclick="plusSlides(1)">&#10095;</a>
+</div>
+<br> -->
+
+<!-- The dots/circles -->
+<!-- <div style="text-align:center">
+  <span class="dot" onclick="currentSlide(1)"></span>
+  <span class="dot" onclick="currentSlide(2)"></span>
+  <span class="dot" onclick="currentSlide(3)"></span>
+</div>
+<script>
+let slideIndex = 1;
+showSlides(slideIndex); -->
+
+// Next/previous controls
+<!-- function plusSlides(n) {
+  showSlides(slideIndex += n); -->
+}
+
+// Thumbnail image controls
+<!-- function currentSlide(n) {
+  showSlides(slideIndex = n);
+} -->
+
+<!-- function showSlides(n) {
+  let i;
+  let slides = document.getElementsByClassName("mySlides");
+  let dots = document.getElementsByClassName("dot");
+  if (n > slides.length) {slideIndex = 1}
+  if (n < 1) {slideIndex = slides.length}
+  for (i = 0; i < slides.length; i++) {
+    slides[i].style.display = "none";
+  }
+  for (i = 0; i < dots.length; i++) {
+    dots[i].className = dots[i].className.replace(" active", "");
+  }
+  slides[slideIndex-1].style.display = "block";
+  dots[slideIndex-1].className += " active";
+} -->
+<!-- </script>  -->
+<!-- </header> -->
+
+<!-- <div class="slider">
+  <img id="img-1" src="./assets/images/1.jpg" alt="Image 1"/>
+  <img id="img-2" src="./assets/images/2.jpg" alt="Image 2"/>
+  <img id="img-3" src="./assets/images/3.jpg" alt="Image 3"/>
+</div>
+<div class="navigation-button">
+  <span class="dot active" onclick="changeSlide(0)"></span>
+  <span class="dot" onclick="changeSlide(1)"></span>
+  <span class="dot" onclick="changeSlide(2)"></span>
+</div>
+<script>
+var imgs = document.querySelectorAll('.slider img');
+var dots = document.querySelectorAll('.dot');
+var currentImg = 0; // index of the first image 
+const interval = 3000; // duration(speed) of the slide
+function changeSlide(n) {
+  for (var i = 0; i < imgs.length; i++) { // reset
+    imgs[i].style.opacity = 0;
+    dots[i].className = dots[i].className.replace(' active', '');
+  }
+
+  currentImg = n;
+
+  imgs[currentImg].style.opacity = 1;
+  dots[currentImg].className += ' active';
+}
+</script> -->
+<!-- <script>
+  let slideIndex = 1;
+  showSlides(slideIndex);
+
+  function plusSlides(n) {
+    showSlides(slideIndex += n);
+  }
+
+  function currentSlide(n) {
+    showSlides(slideIndex = n);
+  }
+
+  function showSlides(n) {
+    let i;
+    let slides = document.getElementsByTagName("img");
+    let dots = document.getElementsByClassName("dot");
+    if (n > slides.length) {slideIndex = 1}
+    if (n < 1) {slideIndex = slides.length}
+    for (i = 0; i < slides.length; i++) {
+      slides[i].style.display = "none";
+    }
+    for (i = 0; i < dots.length; i++) {
+      dots[i].className = dots[i].className.replace(" active", "");
+    }
+    slides[slideIndex-1].style.display = "block";
+    dots[slideIndex-1].className += " active";
+  }
+</script> -->
+<!-- <div id="frame">
+  <input type="radio" name="frame" id="frame1" checked />
+  <input type="radio" name="frame" id="frame2" />
+  <input type="radio" name="frame" id="frame3" />
+  <input type="radio" name="frame" id="frame4" />
+  <div id="slides">
+      <div id="overflow">
+          <div class="inner">
+              <div class="frame frame_1">
+                  <div class="frame-content">
+                      <h2>Slide 1</h2>
+                  </div>
+              </div>
+              <div class="frame frame_2">
+                  <div class="frame-content">
+                      <h2>Slide 2</h2>
+                  </div>
+              </div>
+              <div class="frame frame_3">
+                  <div class="frame-content">
+                      <h2>Slide 3</h2>
+                  </div>
+              </div>
+              <div class="frame frame_4">
+                  <div class="frame-content">
+                      <h2>Slide 4</h2>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+  <div id="controls">
+      <label for="frame1"></label>
+      <label for="frame2"></label>
+      <label for="frame3"></label>
+      <label for="frame4"></label>
+  </div>
+  <div id="bullets">
+      <label for="frame1"></label>
+      <label for="frame2"></label>
+      <label for="frame3"></label>
+      <label for="frame4"></label>
+  </div>
+</div> -->
+<div class="slider">
+  <img src="./Project/IMAGES/1.jpg" alt="Image 1" class="slide" style="display:block;">
+  <!-- <img src="./IMAGES/2.jpg" alt="Image 2" class="slide"> -->
+  <img src="./Project/IMAGES/3.jpg" alt="Image 3" class="slide">
+  <button class="btn prev">&#10094;</button>
+  <button class="btn next">&#10095;</button>
+</div>
+<script>
+let slideIndex = 0;
+const slides = document.querySelectorAll('.slide');
+const showSlide = (index) => {
+slides.forEach((slide, idx) => {
+slide.style.display = idx === index ? 'block' : 'none';
+});
+};
+
+document.querySelector('.prev').addEventListener('click', () => {
+slideIndex = (slideIndex - 1 + slides.length) % slides.length;
+showSlide(slideIndex);
+});
+
+document.querySelector('.next').addEventListener('click', () => {
+slideIndex = (slideIndex + 1) % slides.length;
+showSlide(slideIndex);
+});
+
+showSlide(slideIndex); // Show initial slide
+</script>
+   </body>
+</html>
